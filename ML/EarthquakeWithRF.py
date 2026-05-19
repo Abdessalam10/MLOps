@@ -20,13 +20,37 @@ print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 print("Accuracy:", accuracy_score(y_test, y_pred))
 
+"""
 magnitude = float(input("Enter the magnitude of the earthquake: "))
 depth = float(input("Enter the depth of the earthquake: "))
 cdi = float(input("Enter the Community Internet Intensity Map (cdi) value: "))
 mmi = float(input("Enter the Modified Mercalli Intensity (mmi) value: "))
-sig = float(input("Enter the significance (sig) value: "))
+sig = float(input("Enter the significance (sig) value: "))"
 
 new_data = pd.DataFrame([[magnitude, depth, cdi, mmi, sig]], columns=['magnitude', 'depth', 'cdi', 'mmi', 'sig'])
 pred_encoded = rf.predict(new_data)[0]
 new_prediction = le.inverse_transform([pred_encoded])[0]
 print("New Prediction:", new_prediction)
+"""
+import gradio as gr
+def predict_earthquake_alert(magnitude, depth, cdi, mmi, sig):
+    new_data = pd.DataFrame([[magnitude, depth, cdi, mmi, sig]], columns=['magnitude', 'depth', 'cdi', 'mmi', 'sig'])
+    pred_encoded = rf.predict(new_data)[0]
+    new_prediction = le.inverse_transform([pred_encoded])[0]
+    return f"Predicted Alert: {new_prediction}"
+
+interface = gr.Interface(
+    fn=predict_earthquake_alert,
+    inputs=[
+        gr.Number(label="Magnitude"),
+        gr.Number(label="Depth"),
+        gr.Number(label="CDI"),
+        gr.Number(label="MMI"),
+        gr.Number(label="Sig")
+    ],
+    outputs=gr.Textbox(label="Predicted Alert"),
+    title="Earthquake Alert Prediction",
+    description="Enter earthquake parameters to predict the alert level."
+)
+interface.launch()
+
