@@ -46,3 +46,9 @@ destination_encoded = safe_transform(label_encoders['Destination'], destination)
 new_data = [[airline_encoded, source_encoded, destination_encoded, total_stops, duration_hours, month]]
 predicted_price = model.predict(new_data)[0]
 print(f"Predicted Flight Price: {predicted_price:.2f}")
+
+import joblib 
+
+joblib.dump(model, 'flight_price_model.pkl')
+joblib.dump(label_encoders, 'flight_label_encoders.pkl')
+
