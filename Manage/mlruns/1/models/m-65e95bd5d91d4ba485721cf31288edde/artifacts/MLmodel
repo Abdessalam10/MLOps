@@ -1,0 +1,23 @@
+artifact_path: file:///C:/Users/abdes/OneDrive - ESPRIT/Bureau/MLOps project/manage/mlruns/1/models/m-65e95bd5d91d4ba485721cf31288edde/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-65e95bd5d91d4ba485721cf31288edde
+model_size_bytes: 1444164
+model_uuid: m-65e95bd5d91d4ba485721cf31288edde
+prompts: null
+run_id: 64a1b03a8f804cd78c7ea161fbd24091
+utc_time_created: '2026-05-21 11:46:33.853353'
