@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-
+import joblib
 
 EQ=pd.read_csv('../datasets/earthquake_alert_balanced_dataset.csv')
 FP=pd.read_csv('../datasets/flight_dataset.csv')
@@ -19,7 +19,7 @@ y_pred = rf.predict(X_test)
 print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 print("Accuracy:", accuracy_score(y_test, y_pred))
-
+joblib.dump(rf, 'earthquake_alert_model.pkl')
 """
 magnitude = float(input("Enter the magnitude of the earthquake: "))
 depth = float(input("Enter the depth of the earthquake: "))
@@ -32,6 +32,7 @@ pred_encoded = rf.predict(new_data)[0]
 new_prediction = le.inverse_transform([pred_encoded])[0]
 print("New Prediction:", new_prediction)
 """
+""""
 import gradio as gr
 def predict_earthquake_alert(magnitude, depth, cdi, mmi, sig):
     new_data = pd.DataFrame([[magnitude, depth, cdi, mmi, sig]], columns=['magnitude', 'depth', 'cdi', 'mmi', 'sig'])
@@ -54,3 +55,4 @@ interface = gr.Interface(
 )
 interface.launch()
 
+"""

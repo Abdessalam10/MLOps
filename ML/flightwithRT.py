@@ -50,5 +50,5 @@ print(f"Predicted Flight Price: {predicted_price:.2f}")
 import joblib 
 
 joblib.dump(model, 'flight_price_model.pkl')
-joblib.dump(label_encoders, 'flight_label_encoders.pkl')
+
 
