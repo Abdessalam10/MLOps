@@ -1,7 +1,8 @@
 # MLOps Project
 
 This repository contains an end-to-end example for deploying, tracking, and monitoring machine learning models. It demonstrates data preparation, model training, experiment tracking with MLflow, simple deployment options (FastAPI, Streamlit, Dash), and retraining orchestration.
-
+Certificate
+![Certificate](certif.jpg)
 **Key Concepts**
 - Model experimentation and tracking with MLflow
 - Lightweight model serving with FastAPI
